@@ -1,0 +1,40 @@
+# Les tableaux (Array)
+
+Un tableau est un ensemble d'élément de même type, et de taille fixe.  
+Il est conçu pour permettre un accès rapide aux éléments.  
+
+## Déclaration
+
+~~~
+// Tableau contenant 3 éléments, 1, 2, 3
+int[] tableau_entier = new int[]{1,2,3};
+
+int n = 5;
+
+// Tableau contenant n éléments
+// (n peut avoir n'importe quelle valeur entière)
+double[] tableau_double = new double[n];
+~~~
+
+On déclare la taille du tableau et le type contenu lorsque l'on déclare la variable, et ils ne peuvent plus changer.
+
+## Accès aux éléments d'un tableau et taille
+
+~~~
+int[] tableau = ...;
+
+// Récupérer la valeur du premier élément
+int premier_element = tableau[0];
+
+// Récupérer la longueur du tableau
+int nombre_element  = tableau.length;
+
+~~~
+
+## Parcours des 
+
+## Tableau - distinction variable valeur
+
+
+
+

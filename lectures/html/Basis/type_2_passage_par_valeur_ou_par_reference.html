@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Nicolas Rousset" />
+  <title>Informatique - Java</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Informatique - Java</h1>
+  <p class="author">
+Nicolas Rousset
+  </p>
+</div>
+<div id="passage-par-valeur-ou-par-référence" class="titleslide slide section level1"><h1>Passage par valeur ou par référence</h1></div><div id="types-primitifs-et-type-objet" class="slide section level2">
+<h1>Types primitifs et type objet</h1>
+<p>Il existe deux catégories de type en Java :</p>
+<ul class="incremental">
+<li>les types primitifs (int, long, double, char)<br />
+</li>
+<li>les types objets (tous les autres)</li>
+</ul>
+<p>Par convention les noms des primitifs commencent par une minuscule, ceux des types objets par une majuscule.</p>
+<p>Les classes définies par l'utilisateur sont toujours de type objet. Il n'est pas possible de définir de nouveaux types primitifs.</p>
+</div><div id="int-vs-integer" class="slide section level2">
+<h1>int VS Integer</h1>
+<p>Les Integer sont donc l'équivalent objet des int. Pourquoi existent-ils ? Entre autres parce que certaines manipulations nécessitent un type objet, on ne peut utiliser les containers génériques usuels avec un int :</p>
+<pre><code>Map&lt; ?, ? &gt;
+Set&lt; ? &gt;
+List&lt; ? &gt;</code></pre>
+<p>Tous ces types utiliseront donc le type Integer.</p>
+</div><div id="notion-de-référence" class="slide section level2">
+<h1>Notion de référence</h1>
+<p>Toutes les variables informatiques sont stockées en mémoire, et il est important de distinguer deux choses :</p>
+<ul class="incremental">
+<li>l'adresse de la variable dans la mémoire</li>
+<li>la valeur de la variable stockée à cette adresse</li>
+</ul>
+<p>Deux variables dont les valeurs sont stockées dans le même endroit de la mémoire sont dites <strong>identiques</strong> (notion d' <strong>identité</strong>).<br />
+Comme elles désignent le même emplacement mémoire, la même valeur y est stockée.</p>
+<p>Par contre, deux variables peuvent désigner des endroits différents qui contiennent la même valeur.<br />
+La variable sont dites alors <strong>égale</strong> mais ne sont pas <strong>identiques</strong>.</p>
+</div><div id="passage-par-valeur-ou-par-référence-1" class="slide section level2">
+<h1>Passage par valeur ou par référence</h1>
+<p>Il existe deux façons de passer une variable à une fonction en informatique :</p>
+<ul class="incremental">
+<li>passage par valeur, on fait une copie de la valeur de la variable, qui ne peut donc pas être modifiée par l'effet de la fonction</li>
+<li>passage par référence, on ne copie la valeur de la variable, mais on donne son adresse mémoire. La variable peut donc (potentiellement) être modifiée.</li>
+</ul>
+<p>Les types primitifs sont passés par valeur, les types objets par référence.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Nicolas Rousset" />
+  <title>Informatique - Java</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Informatique - Java</h1>
+  <p class="author">
+Nicolas Rousset
+  </p>
+</div>
+<div id="java" class="slide section level1">
+<h1>Java</h1>
+</div>
+<div id="java---basique" class="slide section level1">
+<h1>Java - basique</h1>
+<h2 id="variables-type">Variables &amp; type</h2>
+<p>Une variable est objet auquel on associe une valeur, et qui, comme son nom l'indique, peut varier.<br />
+Exemple de variable :</p>
+<pre><code>int a = 5; // On crée la variable
+while a &lt; 10: // on utilise sa valeur courante
+    a = a + 1 // on change sa valeur</code></pre>
+<p>Lorsque l'on fait appel à la variable ensuite, elle est remplacée par sa valeur courante, qui peut avoir changer depuis sa déclaration.</p>
+<h2 id="type-de-base-dune-variable">Type de base d'une variable</h2>
+<p>Les 4 types fondamentaux que l'on manipule sont :</p>
+<p>int : entier, 0, 1, 2, 3<br />
+double : nombre à virgule flottante, 3.14, 15,5, 1.0<br />
+boolean : true ou false<br />
+String : chaîne de caractère, représente du texte</p>
+<p>La plupart des types que l'on définit soit-même sont des compositions de ces types + des containers.</p>
+<h2 id="type-dune-variable-2">Type d'une variable (2)</h2>
+<p>Le type d'une variable est sa nature, elle détermine la façon dont elle est stockée dans la mémoire de l'ordinateur et les opérations possibles avec.<br />
+Par exemple on ne peut pas multiplier deux chaines de caractères entre elles (même si elles représentent des entiers) mais on peut multiplier des entiers entre eux.<br />
+De même les méthodes attendent en entrée des arguments d'un type particulier, et renvoit des valeurs d'un type fixé.</p>
+<p>Par exemple les trois opérations suivantes n'aboutissent pas au même résultat :</p>
+<pre><code>int a = 2147483647;
+a = a + 100;
+System.out.println( a ); // affiche -2147483549
+  // a est dévenu négatif !
+float b = 2147483647;
+b = b + 100;
+System.out.println( b ); // affiche 2.14748365E9
+  // la valeur de b n&#39;a pas changé !
+String c = &quot;2147483647&quot;;
+c = c + 100;
+System.out.println( c ); // affiche 2147483647100</code></pre>
+<p>On observe ici deux opérations proches qui aboutissent toutes les deux à des résultats erronés, et une troisième qui effectue quelque chose de totalement différent.<br />
+Les raisons de ces résultats erronés sont dues aux limitations des représentations de ces deux types numériques, que nous verrons plus tard. Ce qu'il faut retenir ici c'est qu'une même opération ne donne pas forcément le même résultat selon le type de la variable.</p>
+<p>Sauf quelques cas particuliers (notamment pour la lisibilité du code) une variable dont la valeur ne change jamais est inutile et peut être remplacer par sa valeur.</p>
+</div>
+<div id="type-dune-variable-3" class="slide section level1">
+<h1>Type d'une variable (3)</h1>
+<p>Ce sont bien les types et pas les valeurs qui déterminent les opérations</p>
+<pre><code>int[] a = new int[]{1,5,9};
+
+int nombre = a[0]; // =&gt; on demande la première valeur
+int nombre_2 = a[0.0]; // Erreur de compilation </code></pre>
+</div>
+<div id="typage-statique" class="slide section level1">
+<h1>Typage statique</h1>
+<p>Java est un langage dit à typage statique, cela signifie que le type de chaque variable est déterminée à la compilation (avant l'exécution du programme) et ne peut plus changer.<br />
+Il se rapproche pour cela des langages de la famille du C (C / C++ / C# / objective-C) et se distingue des langages de script.<br />
+Le type d'une variable est déclaré en même temps que la variable elle-même, par exemple :</p>
+<pre><code>int    a = 0;   // entier
+long   b = 0;   // entier sur 64 bits
+double d = 0.0; // nombre à virgule flottante
+  // sur 64 bits -&gt; plus précis
+char   e = &#39;a&#39;; // caractère
+String f = &quot;Bonjour&quot;; // chaîne de caractère</code></pre>
+<p>Ce sont la plupart des types de base (ou primitifs). On peut ensuite retrouver une quasi-infinité de type différent en java, sachant que l'on peut définir soi-même ces types (on appelle cela des classes dans ce cas).</p>
+</div>
+<div id="opérateurs" class="slide section level1">
+<h1>Opérateurs</h1>
+<p>Les opérateurs désignent les symboles arithmétiques :</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">symbole de l'opérateur</th>
+<th align="center">type</th>
+<th align="left">signification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">+</td>
+<td align="center">opérateur arithmétique</td>
+<td align="left">addition</td>
+</tr>
+<tr class="even">
+<td align="center">-</td>
+<td align="center">opérateur arithmétique</td>
+<td align="left">soustraction</td>
+</tr>
+<tr class="odd">
+<td align="center">*</td>
+<td align="center">opérateur arithmétique</td>
+<td align="left">multiplication</td>
+</tr>
+<tr class="even">
+<td align="center">/</td>
+<td align="center">opérateur arithmétique</td>
+<td align="left">division</td>
+</tr>
+<tr class="odd">
+<td align="center">&gt;=</td>
+<td align="center">opérateur de comparaison</td>
+<td align="left">supérieur ou égal</td>
+</tr>
+<tr class="even">
+<td align="center">==</td>
+<td align="center">opérateur de comparaison</td>
+<td align="left">égalité / identité</td>
+</tr>
+<tr class="odd">
+<td align="center">!=</td>
+<td align="center">opérateur de comparaison</td>
+<td align="left">différence</td>
+</tr>
+<tr class="even">
+<td align="center">!</td>
+<td align="center">opérateur logique</td>
+<td align="left">négation</td>
+</tr>
+<tr class="odd">
+<td align="center">&amp;&amp;</td>
+<td align="center">opérateur logique</td>
+<td align="left">et</td>
+</tr>
+<tr class="even">
+<td align="center">||</td>
+<td align="center">opérateur logique</td>
+<td align="left">ou</td>
+</tr>
+</tbody>
+</table>
+<p>[1] =&gt; aussi appelé reste de la division entière</p>
+</div>
+<div id="limite-des-types-numériques" class="slide section level1">
+<h1>Limite des types numériques</h1>
+<p>Les principales limites à connaître sur les types sont :</p>
+<p>int =&gt; peut aller de -2147483648 à 2147483647 (environ - 2 milliards à 2 milliards)<br />
+long =&gt; peut aller de environ - 8 milliards à 8 milliards<br />
+double =&gt; précision relative maximum de l'ordre de 10^-15 (ie 1 + 10^-16 = 1)</p>
+</div>
+<div id="int-et-integer-long-et-long" class="slide section level1">
+<h1>int et Integer, long et Long</h1>
+<p>Ces types sont largement interchangeable :</p>
+<pre><code>int     entier1  = 1;
+Integer integer1 = 1;
+int     entier2  = integer1;
+Integer integer2 = entier1;</code></pre>
+<p>Les conversions sont implicites. Nous verrons les différences plus tards. Retenez pour l'instant :</p>
+<p>1/ Les types avec majuscule ont beaucoup plus de méthodes associées (parseLong / parseInt)<br />
+2/ Les listes et autres structures ne peuvent pas contenir de type primitif<br />
+3/ Il y a des différences avec le symbôle &quot;==&quot;</p>
+</div>
+<div id="conversion" class="slide section level1">
+<h1>Conversion</h1>
+<h2 id="string-int">String =&gt; int</h2>
+<pre><code>String s = &quot;1000&quot;;
+int i = Integer.parseInt(s);</code></pre>
+<h2 id="string-long">String =&gt; long</h2>
+<pre><code>String s = &quot;1000&quot;;
+Long i = Long.parseLong(s);</code></pre>
+<h2 id="int-string">int =&gt; String</h2>
+<pre><code>int i = 1000;
+String s = &quot;&quot; + i;</code></pre>
+<p>Tous les objets sont convertibles</p>
+</div>
+<div id="problème-tordus-..." class="slide section level1">
+<h1>Problème tordus ...</h1>
+<p>On peut avoir des soucis avec les surcharges de méthode de type</p>
+<pre><code>public class Main
+{
+    public static Long multiplier(Long l1, Long l2)
+    {
+        return l1*l2;
+    }
+
+    public static Long multiplier(long l1, long l2)
+    {
+        return l1*l2;
+    }
+}</code></pre>
+</div>
+</body>
+</html>
