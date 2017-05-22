@@ -121,7 +121,6 @@ Il se déclare comme une fonction avec le même nom que la classe, et en omettan
 
     public Personne()
     {
-        return nom;
     }
 
     // même chose, set + le nom de l&#39;attribut avec une majuscule au début 
@@ -140,6 +139,8 @@ Il se déclare comme une fonction avec le même nom que la classe, et en omettan
 Personne personne = new Personne( &quot;Jean&quot;, &quot;Dupont&quot;, 18 );
 // Appel du constructeur par défaut
 Personne johnDoe = new Personne();</code></pre>
+<p>Note : Si il n'y a aucun constructeur, Java en créé un par défaut qui ne fait rien (tous les variables sont initialisées à leurs valeurs par défaut).<br />
+Dès lors qu'aun moins un constructeur est créé, il n'y a plus de constructeur créé, il faut le faire soi-même.</p>
 </div>
 <div id="mot-clé-this" class="slide section level1">
 <h1>Mot clé this</h1>
