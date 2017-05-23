@@ -318,9 +318,9 @@ chenil.add( new Chihuahua("Tobi") );
 chenil.add( new TerreNeuve("Brontosaure") );
 chenil.add( new Rottweiller("Bichon") );
 
-for( Chien chien : chenil )
+for( Chien monChienQuiVaAboyer : chenil )
 {
-   chien.aboyer(); 
+   monChienQuiVaAboyer.aboyer(); 
 }
 ~~~
 
