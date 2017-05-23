@@ -1,4 +1,4 @@
-package TypeElementaires;
+package typesElementaires;
 
 public class DifferencesIntegerInt {
 	public static void leCoteObscurDeJava()

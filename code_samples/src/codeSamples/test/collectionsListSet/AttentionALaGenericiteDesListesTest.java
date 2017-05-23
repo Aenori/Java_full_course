@@ -1,4 +1,4 @@
-package CollectionsListSet;
+package collectionsListSet;
 
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;

@@ -1,4 +1,4 @@
-package ClassesEtHeritage;
+package classesEtHeritage;
 import java.util.*;
 
 

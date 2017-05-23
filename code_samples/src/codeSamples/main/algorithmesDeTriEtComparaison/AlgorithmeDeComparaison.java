@@ -1,4 +1,4 @@
-package AlgorithmesDeTriEtComparaison;
+package algorithmesDeTriEtComparaison;
 
 import java.util.ArrayList;
 import java.util.List;

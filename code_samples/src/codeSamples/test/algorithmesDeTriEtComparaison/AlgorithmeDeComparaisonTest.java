@@ -1,9 +1,9 @@
-package AlgorithmesDeTriEtComparaison;
+package algorithmesDeTriEtComparaison;
 
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 
-import Utils.TestsPersonnalises;
+import testUtils.TestsPersonnalises;
 import junit.framework.TestCase;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)

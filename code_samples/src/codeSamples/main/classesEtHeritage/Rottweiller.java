@@ -1,4 +1,4 @@
-package ClassesEtHeritage;
+package classesEtHeritage;
 
 public class Rottweiller extends Chien
 {

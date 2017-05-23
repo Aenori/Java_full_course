@@ -1,4 +1,4 @@
-package AlgorithmeDeRecherche;
+package algorithmeDeRecherche;
 
 public class RechercheDichotomique {
 	public static int PositionParRechercheDichotomique(

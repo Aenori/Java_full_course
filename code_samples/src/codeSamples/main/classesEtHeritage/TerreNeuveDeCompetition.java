@@ -1,4 +1,4 @@
-package ClassesEtHeritage;
+package classesEtHeritage;
 
 public class TerreNeuveDeCompetition extends TerreNeuve {
 	private int nbMedailles;
