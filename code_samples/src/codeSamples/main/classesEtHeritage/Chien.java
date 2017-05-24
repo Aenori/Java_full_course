@@ -16,6 +16,7 @@ public abstract	class Chien
 		System.out.println("Wouaf	wouaf");
 	}
 	public abstract void afficherTaille();
+	
 	public int getNbPattes() {
 		return nbPattes;
 	}

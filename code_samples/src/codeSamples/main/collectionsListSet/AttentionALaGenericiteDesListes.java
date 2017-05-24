@@ -3,6 +3,7 @@ package collectionsListSet;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class AttentionALaGenericiteDesListes {
 	/* 
@@ -33,6 +34,7 @@ public class AttentionALaGenericiteDesListes {
 	public static List<Integer> getListNumero1(int n)
 	{
 		List<Integer> liste = new LinkedList();
+		//Queue<Integer> queue = new LinkedList();
 		addInteger(liste, n);
 		return liste;
 	}

@@ -7,14 +7,14 @@ import java.util.List;
 
 public class AttentionALaGenericiteDesCollections {
 	private static Collection getCollection(boolean b, int n) {
-		Collection collection = b ? new HashSet() : new ArrayList();
+		Collection collection = b ? new HashSet() : new ArrayList();		
 		for(int i = 0; i < n ; ++i)
 		{
 			collection.add(i);
 		}
 		return collection;
 	}
-	
+
 	public static boolean doTest(boolean Coll1isSet, boolean Coll2isSet, int n)
 	{
 		Collection<Integer> collection1 = getCollection(Coll1isSet,n);
