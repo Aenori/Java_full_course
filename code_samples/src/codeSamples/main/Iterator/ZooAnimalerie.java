@@ -6,54 +6,88 @@ public class ZooAnimalerie {
 	private List<Tigre> tigres;
 	private List<Chien> chiens;
 	private List<SacCroquette> sacCroquettes;
+	private List<Animal> animaux;
+	private List<Achetable> achetables;
 	
-	private Iterable<Achetable> iterableAsAchetable;
+	//private Iterable<Achetable> iterableAsAchetable;
 	
 	public ZooAnimalerie()
 	{
 		tigres = new ArrayList<Tigre>();
 		chiens = new ArrayList();
 		sacCroquettes = new ArrayList();
-		iterableAsAchetable = new MultiListIterable<Achetable>(chiens, sacCroquettes);
+		animaux = new ArrayList();
+		achetables = new ArrayList();
+		//iterableAsAchetable = new MultiListIterable<Achetable>(chiens, sacCroquettes);
 	}
 	
 	public static void main(String[] args)
 	{
 		ZooAnimalerie zooA = new ZooAnimalerie();
-		zooA.getChiens().add(new Chien("Max"));
-		zooA.getSacCroquettes().add(new SacCroquette("Canigou 10 kg"));
-		zooA.getSacCroquettes().add(new SacCroquette("Royal Canin 20 kg"));
-		zooA.getChiens().add(new Chien("Tobi"));
-		zooA.getChiens().add(new Chien("Medor"));
+		zooA.ajouterChien(new Chien("Max"));
+		zooA.ajouterSacCroquette(new SacCroquette("Canigou 10 kg"));
+		zooA.ajouterSacCroquette(new SacCroquette("Royal Canin 20 kg"));
+		zooA.ajouterChien(new Chien("Tobi"));
+		zooA.ajouterChien(new Chien("Medor"));
 		
-		zooA.getTigres().add(new Tigre());
-		zooA.getTigres().add(new Tigre());
-		zooA.getTigres().add(new Tigre());
-		zooA.getTigres().add(new Tigre());
-		zooA.getTigres().add(new Tigre());
-		zooA.getTigres().add(new Tigre());
-		zooA.getTigres().add(new Tigre());
+		zooA.ajouterTigre(new Tigre());
+		zooA.ajouterTigre(new Tigre());
+		zooA.ajouterTigre(new Tigre());
 		
-		for(Achetable achetable : zooA.getIterableAsAchetable())
+		for(Achetable achetable : zooA.getChiens())
 		{
-			System.out.println(achetable);
+			
+		}
+		for(Achetable achetable : zooA.getSacDeCroquettes())
+		{
+			
 		}
 		
 	}
 
-	public List<Tigre> getTigres() {
-		return tigres;
+	private Iterable<Achetable> getSacDeCroquettes() {
+		return achetables;
 	}
 
-	public List<Chien> getChiens() {
+	private void ajouterSacCroquette(SacCroquette sacDeCroquette) {
+		sacCroquettes.add(sacDeCroquette);
+		achetables.add(sacDeCroquette);
+		
+	}
+
+	public void ajouterTigre(Tigre tigre)
+	{
+		animaux.add(tigre);
+		tigres.add(tigre);
+	}
+	
+	public void ajouterChien(Chien chien)
+	{
+		animaux.add(chien);
+		achetables.add(chien);
+		chiens.add(chien);
+	}
+	
+	public Iterable<Tigre> getTigres() {
+		return tigres;
+	}
+	
+	public Iterable<Chien> getChiens() {
+		return chiens;
+	}
+
+	public Iterable<Achetable> getAchetables() {
+		return achetables;
+	}
+	/*public List<Chien> getChiens() {
 		return chiens;
 	}
 
 	public List<SacCroquette> getSacCroquettes() {
 		return sacCroquettes;
-	}
+	}*/
 
-	public Iterable<Achetable> getIterableAsAchetable() {
+	/*public Iterable<Achetable> getIterableAsAchetable() {
 		return iterableAsAchetable;
-	}
+	}*/
 }

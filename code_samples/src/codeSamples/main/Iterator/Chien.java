@@ -1,6 +1,6 @@
 package Iterator;
 
-public class Chien implements Achetable {
+public class Chien extends Animal implements Achetable {
 	private String name;
 	
 	public Chien(String name) {

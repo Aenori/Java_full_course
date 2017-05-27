@@ -1,0 +1,26 @@
+% Enonce java
+% Nicolas Rousset 
+% 2017-05-23
+
+Dans cet exercice (assez long), nous allons mettre en place une arborescence 
+de classe pour représenter et dessiner des figures géométriques.
+
+Nous allons donc au final représenter les objets suivants :
+
+- rectangle
+- losange
+- carré
+- rond
+- ovale
+- polygone
+- polygone régulier
+- ligne
+- point
+- flèche
+
+On distinguera bien dans tout cet exercice deux notions pour 
+
+On partira une hiérarchie initiale qui sépare les objets selon leur dimension :
+
+
+
