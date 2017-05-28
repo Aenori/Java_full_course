@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Nicolas Rousset" />
+  <title>Informatique - Java</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Informatique - Java</h1>
+  <p class="author">
+Nicolas Rousset
+  </p>
+  <p class="date">Gestion des exceptions</p>
+</div>
+<div id="java---exceptions" class="slide section level1">
+<h1>Java - exceptions</h1>
+<h2 id="rappel-sur-le-runtime-vs-compilation">Rappel sur le Runtime VS Compilation</h2>
+<p>Il y a deux étapes à bien distinguer en java, la <strong>compilation</strong> et le <strong>runtime</strong>.</p>
+<p>Simplement la première désigne le fait de transformer votre code source en code exécutable, le deuxième le moment où votre programme est effectivement exécuté.</p>
+<p>Les erreurs dans la première partie sont liées à des problèmes de syntaxe ou de typages incohérents; elles sont levées directement par le compilateur, et sont faciles à traiter (si votre code n'est pas trop mal structuré).</p>
+<p>Les erreurs dans la deuxième partie sont liées aux valeurs des variables : elles ne sont donc pas détectable à priori par le compilateur. Le compilateur ne peut, par exemple, détecter systématiquement si une variable est bien initialisée avant que l'on ne fasse appel à elle.</p>
+<p>Ici, erreur doit bien s'entendre comme une opération qui n'est pas possible, par exemple appeler une méthode sur un objet **null* accéder à un élément qui n'existe pas dans une liste, diviser par 0, etc ...</p>
+<p>Les opérations qui ne produisent pas le bon résultat sont encore plus problématiques, car plus difficiles à détecter. C'est pour cela que l'on choisira parfois de lever une exception (voir plus loin), ie que la fonction se comporte comme si elle ne pouvait pas produire le résultat</p>
+</div>
+<div id="définition-dune-exception" class="slide section level1">
+<h1>Définition d'une exception</h1>
+<p>Une exception, comme son nom l'indique, est créée lorsqu'une opération impossible du fait des valeurs des variables est tentée.</p>
+<p>On interrompt alors le code exécutant, et on gère cette anomalie.</p>
+<p><strong>Les exceptions ne doivent pas servir à cacher des erreurs de programmation</strong></p>
+<p>Au contraire, on rajoutera des exceptions pour tenir compte de ce qui a été supposé, afin de mieux détecter certains comportements incohérents.</p>
+<h2 id="cas-dusage-des-exceptions">Cas d'usage des exceptions</h2>
+<p>Les principaux cas d'usage des exceptions concernent la lecture de données externes ; lorsque vous lisez un fichier supposé être d'un certain format, que se passe-t-il si le fichier ne correspond pas ? Si il y a des lettres là où il devrait y avoir des chiffres ?</p>
+<p>Le programme lève alors une exception.</p>
+<p>Normalement si votre programme ne dépend pas du tout des données externes (ce qui serait en fait un peu étrange, il renverrait toujours le même résultat à chaque exécution) vous n'avez pas besoin d'exception.</p>
+</div>
+<div id="exception-usuelles" class="slide section level1">
+<h1>Exception usuelles</h1>
+</div>
+</body>
+</html>

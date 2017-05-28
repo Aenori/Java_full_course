@@ -53,3 +53,8 @@ Normalement si votre programme ne dépend pas du tout des données externes (ce 
 fait un peu étrange, il renverrait toujours le même résultat à chaque exécution) vous n'avez
 pas besoin d'exception.  
 
+# Exception usuelles
+
+
+
+
