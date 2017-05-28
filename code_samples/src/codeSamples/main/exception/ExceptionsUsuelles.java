@@ -9,7 +9,20 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.function.Consumer;
 
-public class CasDException {
+public class ExceptionsUsuelles {
+	public static void main(String[] args)
+	{
+		callCallNullPointerException();
+	}
+	
+	private static void callCallNullPointerException() {
+		callNullPointerException();
+	}
+
+	private static void callNullPointerException() {
+		nullPointerException();
+	}
+
 	/*
 	 * Lance l'exception Arithmetic divide par 0.
 	 */

@@ -45,6 +45,146 @@ Nicolas Rousset
 </div>
 <div id="exception-usuelles" class="slide section level1">
 <h1>Exception usuelles</h1>
+<p>Quelques exemples d'exception usuelles (voir dans le project de code java JavaCodeSamples exception/ExceptionsUsuelles.java)</p>
+<h2 id="java.lang.nullpointerexception">java.lang.NullPointerException</h2>
+<p>Levée lorsque l'on fait n'importe quelle opération ou traitement sur un objet de valeur <strong>null</strong> (autre que <strong>!=</strong> ou <strong>==</strong>)</p>
+<h2 id="java.lang.arithmeticexception">java.lang.ArithmeticException</h2>
+<p>Lorsqu'une opération arithmétique impossible est tentée (division par 0, souvent)</p>
+<h2 id="java.lang.indexoutofboundsexception">java.lang.IndexOutOfBoundsException</h2>
+<p>Lorsque l'on cherche à accéder à un élément qui n'existe pas (dans un tableau ou une liste)</p>
+<h2 id="java.lang.numberformatexception">java.lang.NumberFormatException</h2>
+<p>Lorsque l'on essaie de convertir en nombre (avec Integer.parse) une chaîne de caractère incompatible</p>
+<h2 id="java.lang.classcastexception">java.lang.ClassCastException</h2>
+<p>Lorsque l'on fait une conversion explicite avec une valeur incompatible</p>
+<h2 id="java.nio.file.nosuchfileexception">java.nio.file.NoSuchFileException</h2>
+<p>Lorsque l'on cherche à accéder, avec les méthodes du package java.nio, à un fichier qui n'existe pas</p>
+</div>
+<div id="caractéristiques-dune-exception" class="slide section level1">
+<h1>Caractéristiques d'une exception</h1>
+<p>Avant de rentrer dans les détails du système spécifique de propagation d'une exception, notons qu'une exeption hérite nécessairement de la classe concrère java.lang.Exception, qui elle-même hérite de la classe Throwable, qui définit les caractéristiques d'une exception;</p>
+<p>Une exception possède :</p>
+<ul class="incremental">
+<li>un message; une String à destination de l'utilisateur<br />
+</li>
+<li>une cause; ie une autre exception si l'exception a été lancée à cause d'une autre<br />
+</li>
+<li>une classe; comme tout objet java, mais dans le cas des exceptions on l'utilise particulièrement</li>
+<li>une stackTrace; ie la liste des lignes de code qui ont mené à l'exécution de la ligne problématique</li>
+</ul>
+<p>A noter que l'on peut créer directement des objets de la classe Exception, sans avoir à en hériter obligatoirement (il s'agit d'une classe concrète)</p>
+<p>On accède à ces éléments avec les méthodes définies dans la classe Throwable <em>https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html</em></p>
+<p>getMessage()<br />
+getCause()<br />
+getClass()<br />
+getStackTrace() ou printStackTrace()</p>
+<p>On définit ces valeurs dans le constructeur, en surchargeant les méthodes get mentionnées ci-dessus ou avec les setters (il n'y en a pas pour le message)</p>
+</div>
+<div id="système-de-propagation-dune-exception" class="slide section level1">
+<h1>Système de propagation d'une exception</h1>
+<p>Regardons le résultat d'un main qui provoque une exception :</p>
+<pre><code>Exception in thread &quot;main&quot; java.lang.NullPointerException
+    at exception.ExceptionsUsuelles.nullPointerException(ExceptionsUsuelles.java:46)
+    at exception.ExceptionsUsuelles.callNullPointerException(ExceptionsUsuelles.java:23)
+    at exception.ExceptionsUsuelles.callCallNullPointerException(ExceptionsUsuelles.java:19)
+    at exception.ExceptionsUsuelles.main(ExceptionsUsuelles.java:15)</code></pre>
+<p>Ce qui s'affiche est la stackTrace, ie la liste des appels de fonction qui a mené à l'exception.<br />
+Elle se lit de bas en haut : la fonction <strong>main</strong> a appelé la fonction <strong>callCallNullPointerException</strong> qui a appelé la fonction <strong>callNullPointerException</strong> qui a appelé la fonction <strong>nullPointerException</strong> qui a elle-même levé l'exception.</p>
+<p><strong>Une fonction qui lève une exception s'arrête donc instantanément</strong></p>
+<p>De la même façon que le <strong>return</strong>, sauf qu'ici on voit que cela se propage, toutes les fonctions appelantes s'arrêtent les unes après les autres. A noter que l'exception est le seul mécanisme qui permette ainsi d'interrompre la fonction appelante à partir de la fonction appelée.</p>
+</div>
+<div id="système-de-propagation-dune-exception---le-try-catch" class="slide section level1">
+<h1>Système de propagation d'une exception - le try / catch</h1>
+<p>La propriété d'une exception est donc de se propager, mais jusqu'à quand ?</p>
+<p>En fait, si rien ne l'arrête, elle remonte jusqu'au <strong>main</strong> et interrompt donc le programme.<br />
+Le block qui est conçu pour l'arrêter est ce que l'on appelle le try / catch, qui ressemble à ceci :</p>
+<pre><code>List&lt;Integer&gt; liste = new ArrayList();
+try
+{
+    Integer un = liste.get(0);
+}
+catch( IndexOutOfBoundsException ex )
+{
+    System.err.println( &quot;Oups, quelque chose n&#39;a pas marché&quot; );
+    System.err.println( ex.getLocalizedMessage() );
+    ex.printStackTrace(System.err);
+}
+System.out.println(&quot;Mais on survit quand même&quot;);</code></pre>
+<p>On &quot;essaie&quot; un code et si celui-ci ne fonctionne pas, on gère l'exception.<br />
+Puis le code continue à être exécuté normalement.</p>
+</div>
+<div id="système-de-propagation-dune-exception---le-try-catch-2" class="slide section level1">
+<h1>Système de propagation d'une exception - le try / catch (2)</h1>
+<p>Le point remarquable du catch est que l'on spécifie l'exception que l'on veut attraper. Ainsi, la structure ci-dessous n'arrêtera pas la propagation de l'exception :</p>
+<pre><code>List&lt;Integer&gt; liste = new ArrayList();
+try
+{
+    Integer un = liste.get(0);
+}
+catch( ArithmeticException ex )
+{
+    System.out.println( &quot;Tout va bien !!&quot; );
+}
+System.out.println(&quot;Mais on survit quand même&quot;);</code></pre>
+<p>En effet l'exception levée ne correspond à un type indiqué dans les catchs.</p>
+</div>
+<div id="système-de-propagation-dune-exception---le-try-catch-3" class="slide section level1">
+<h1>Système de propagation d'une exception - le try / catch (3)</h1>
+<p>On peut même ajouter plusieurs <strong>catch</strong> les uns derrière les autres pour attraper différentes exceptions :</p>
+<pre><code>...
+catch( ArithmeticException ex )
+{
+    System.out.println( &quot;J&#39;ai attrapé une exception arithmétique&quot; );
+}
+catch( IndexOutOfBondException ex )
+{
+    System.out.println( &quot;J&#39;ai attrapé une exception d&#39;index hors domaine&quot; );
+}
+catch( Exception ex )
+{
+    System.out.println( &quot;J&#39;attrape toutes les exceptions qui restent&quot; );
+}</code></pre>
+<p>Un seul catch sera activé. Comme toutes les exceptions héritent de <strong>Exception</strong>, un catch( Exception ex) attrapera toutes les exceptions.<br />
+Il n'est donc pas possible de rajouter de nouveau catch après le <strong>catch( Exception ex)</strong><br />
+Un catch attrape l'exception mentionnée et toutes les exceptions héritées.</p>
+</div>
+<div id="système-de-propagation-dune-exception---le-try-catch-finally" class="slide section level1">
+<h1>Système de propagation d'une exception - le try / catch / finally</h1>
+<p>On peut ajouter une clause <strong>finally</strong> après les catch. Celle-ci sera <strong>toujours</strong> exécutée que l'on catche ou pas une exception, et quelque soit l'exécution catchée, et y compris si l'exception n'est pas catchée.</p>
+<pre><code>...
+catch( ArithmeticException ex )
+{
+    System.out.println( &quot;J&#39;ai attrapé une exception arithmétique&quot; );
+}
+catch( Exception ex )
+{
+    System.out.println( &quot;J&#39;attrape toutes les exceptions qui restent&quot; );
+}
+finally
+{
+    System.err.println(&quot;Erreur détectée, le reste de la liste à traiter est supprimé&quot;);
+    liste.clear(); 
+}</code></pre>
+</div>
+<div id="système-de-propagation-dune-exception---le-try-catch-finally-2" class="slide section level1">
+<h1>Système de propagation d'une exception - le try / catch / finally (2)</h1>
+<p>Typiquement, on l'utilisait avant pour fermer les fichiers :</p>
+<pre><code>BufferedReader br = new BufferedReader(new FileReader(path));
+try
+{
+    return br.readLine();
+} 
+finally
+{
+    if(br != null)
+    {
+        br.close();
+    }
+}</code></pre>
+<p>A noter qu'il existe une nouvelle syntaxe pour cela dans Java 7, plus élégante :</p>
+<pre><code>try( BufferedReader br = new BufferedReader(new FileReader(path)) )
+{
+    return br.readLine();
+} </code></pre>
 </div>
 </body>
 </html>
