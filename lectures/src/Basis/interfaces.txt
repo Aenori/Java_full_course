@@ -1,0 +1,42 @@
+% Informatique - Java
+% Nicolas Rousset 
+
+# Java - classes & interfaces
+
+## Java - les interfaces - note liminaire
+
+Ce cours nécessite d'avoir préalablement lu (et relativement bien compris) le cours sur les classes.
+
+## Classe et héritage simple
+
+En java, une classe ne peut hériter d'une seule autre classe (contrairement au langage sur lequel il s'est basé, le C++, ceci dans un souci de simplification).  
+Cela limite la possibilité de représenter plusieurs concepts génériques avec des classes. En effet, si l'on souhaite qu'une classe hérite de deux autres, il est nécessaire que l'une des deux classes hérite de l'autre.  
+
+# Classe et héritage simple - exemple
+
+On cherche à modéliser un zoo - animalerie, où l'on a des animaux et où l'on peut en acheter certains, mais pas tous.  
+On cherche à modéliser 3 objets concret et 2 concepts :  
+
+2 concepts:  
+- les animaux  
+- les objets achetables  
+
+3 objets concrets:  
+- les tigres qui sont des animaux non achetables   
+- les chiens qui sont des animaux et achetables  
+- des sacs de croquettes qui sont achetables  
+
+Comment faire pour représenter tout cela ? (et pouvoir faire des traitements génériques sur les animaux ou sur les objets achetables ?)  
+
+# Impossibilité de représenter deux concepts distincts avec des classes
+
+![mauvais diagramme](img/01_basis_exemple_zoo_class_interface.png "Deux diagrammes erronés")
+
+On constate bien qu'aucun des deux schémas n'est satisfaisant : dans celui de gauche, les croquettes sont un animaux, et dans celui de droite, le tigre est achetable.  
+
+
+
+
+
+
+

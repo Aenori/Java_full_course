@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Nicolas Rousset" />
+  <title>Informatique - Java</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Informatique - Java</h1>
+  <p class="author">
+Nicolas Rousset
+  </p>
+</div>
+<div id="java---classes-interfaces" class="slide section level1">
+<h1>Java - classes &amp; interfaces</h1>
+<h2 id="java---les-interfaces---note-liminaire">Java - les interfaces - note liminaire</h2>
+<p>Ce cours nécessite d'avoir préalablement lu (et relativement bien compris) le cours sur les classes.</p>
+<h2 id="classe-et-héritage-simple">Classe et héritage simple</h2>
+<p>En java, une classe ne peut hériter d'une seule autre classe (contrairement au langage sur lequel il s'est basé, le C++, ceci dans un souci de simplification).<br />
+Cela limite la possibilité de représenter plusieurs concepts génériques avec des classes. En effet, si l'on souhaite qu'une classe hérite de deux autres, il est nécessaire que l'une des deux classes hérite de l'autre.</p>
+</div>
+<div id="classe-et-héritage-simple---exemple" class="slide section level1">
+<h1>Classe et héritage simple - exemple</h1>
+<p>On cherche à modéliser un zoo - animalerie, où l'on a des animaux et où l'on peut en acheter certains, mais pas tous.<br />
+On cherche à modéliser 3 objets concret et 2 concepts :</p>
+<p>2 concepts:<br />
+- les animaux<br />
+- les objets achetables</p>
+<p>3 objets concrets:<br />
+- les tigres qui sont des animaux non achetables<br />
+- les chiens qui sont des animaux et achetables<br />
+- des sacs de croquettes qui sont achetables</p>
+<p>Comment faire pour représenter tout cela ? (et pouvoir faire des traitements génériques sur les animaux ou sur les objets achetables ?)</p>
+</div>
+<div id="impossibilité-de-représenter-deux-concepts-distincts-avec-des-classes" class="slide section level1">
+<h1>Impossibilité de représenter deux concepts distincts avec des classes</h1>
+<div class="figure">
+<img src="img/01_basis_exemple_zoo_class_interface.png" title="Deux diagrammes erronés" alt="mauvais diagramme" />
+<p class="caption">mauvais diagramme</p>
+</div>
+<p>On constate bien qu'aucun des deux schémas n'est satisfaisant : dans celui de gauche, les croquettes sont un animaux, et dans celui de droite, le tigre est achetable.</p>
+</div>
+</body>
+</html>

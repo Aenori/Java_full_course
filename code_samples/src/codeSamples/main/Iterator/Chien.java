@@ -23,4 +23,9 @@ public class Chien extends Animal implements Achetable {
 	{
 		return "Chien " + name;
 	}
+
+	public String getNom() {
+		// TODO Auto-generated method stub
+		return name;
+	}
 }

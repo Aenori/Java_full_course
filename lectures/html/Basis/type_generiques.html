@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Nicolas Rousset" />
+  <title>Informatique - Java</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Informatique - Java</h1>
+  <p class="author">
+Nicolas Rousset
+  </p>
+</div>
+<div id="java---les-classes" class="slide section level1">
+<h1>Java - les classes</h1>
+<p>Java étant particulièrement orienté objet, les classes sont omniprésentes.<br />
+Ainsi même si l'on veut définir des fonctions qui ne sont pas rattachées à une classe particulière, on est obligée de créer une classe et de les définir comme static liés à cette classe.</p>
+<h2 id="quest-ce-quune-classe">Qu'est-ce qu'une classe ?</h2>
+<p>On peut définir une classe de deux façons :</p>
+<ul class="incremental">
+<li>comment étant la représentation d'un objet modélisé<br />
+</li>
+<li>comme étant un rassemblement de variables (les attributs) et des méthodes pour les traiter</li>
+</ul>
+<p>Par exemple si l'on souhaite modéliser un avion, on pourra avoir des classes Passagers, Moteurs, Pilote, Aile, etc ...</p>
+<p>Toutefois nous verrons que les classes ne se rattachent pas toujours à un objet réel que l'on souhaite modéliser.</p>
+<h2 id="quest-ce-quune-classe-2">Qu'est-ce qu'une classe ? (2)</h2>
+<p>Si l'on prend un exemple simple, une personne, on la représentera par une classe Personne.<br />
+Celle-ci possèdera des attributs, par exemple :</p>
+<ul class="incremental">
+<li>un nom sous forme de String<br />
+</li>
+<li>un prénom sous forme de String<br />
+</li>
+<li>un numéro de sécurité sociale sous forme de Long</li>
+</ul>
+<p>On est donc obliger pour représenter un objet réel de déterminer l'ensemble des données qui le qualifie. On en aura donc une représentation limitée.</p>
+<p>Les attributs d'une classe peuvent très bien être une autre classe.</p>
+<h2 id="classe-et-instance-de-classe">Classe et instance de classe</h2>
+<p>Il faut distincter deux élements :</p>
+<ul class="incremental">
+<li>la classe elle-même</li>
+<li>les instances de cette classes</li>
+</ul>
+<p>Par exemple si l'on définit une classe Voiture, celle-ci représente le concept de général de voiture, et chaque voiture sera représentée par une instance.</p>
+</div>
+<div id="définition-dune-classe" class="slide section level1">
+<h1>Définition d'une classe</h1>
+<p>On définit une classe ainsi :</p>
+<pre><code>public class Personne
+{
+    private String prenom;
+    private String nom;
+    private int age;
+}</code></pre>
+<p>Il s'agit d'une classe possédant 3 attributs, un prénom sous forme de champ texte, un nom sous forme de champ texte, un age.<br />
+Les attributs sont toujours <strong>private</strong>, sauf exception.</p>
+<h2 id="définition-dune-classe-2---les-modifiers">Définition d'une classe (2) - les modifiers</h2>
+<p>Lorsque l'on déclare une classe, on utilisera un certain nombre de qualificatifs sur les attributs et les méthodes. Les principaux sont :</p>
+<p>Les modifiers d'accès :</p>
+<ul class="incremental">
+<li>public : la méthode est accessible depuis n'importe quel endroit du code (normalement on ne l'utilise pas pour un attribut)<br />
+</li>
+<li>protected : la méthode ou l'attribut est accessible à l'intérieur de la classe et des classes dérivées (voir plus loin)<br />
+</li>
+<li>private : la méthode ou l'attribut est accessible uniquement à l'intérieur de la classe</li>
+</ul>
+<h2 id="définition-dune-classe-3---les-modifiers">Définition d'une classe (3) - les modifiers</h2>
+<p>Au delà des modifiers d'accès, il existe :</p>
+<ul class="incremental">
+<li>final (attributs) : indique qu'une valeur ne peut être modifiée une fois initialisée. La valeur doit donc être initialisée dans le constructeur<br />
+</li>
+<li>static (attributs ou méthode) : indique que l'attribut ou la méthode est rattachée à la classe. Pour un attribut il est donc commun à toutes les instances de la classe. Pour une méthode, cela signifie qu'elle ne peut accéder qu'à des méthodes et des attributs statiques.<br />
+</li>
+<li>abstract : s'applique à la classe ou la méthode pour signifier qu'elle n'est pas définie. Dès lors qu'une classe est asbtraite (soit déclarée comme telle, soit parce qu'elle possède au moins une méthode abstraite) elle doit être dérivée et ne peut être implémentée directement</li>
+</ul>
+</div>
+<div id="définition-dune-classe-4---getters-and-setters" class="slide section level1">
+<h1>Définition d'une classe (4) - getters and setters</h1>
+<p>private =&gt; par défaut on n'expose pas les attributs (pas d'accès ou de modification directe)</p>
+<p>Du coup on définit des méthodes associées pour accéder et modifier les valeurs. Un attribut peut n'avoir ni l'un ou l'autre.</p>
+<pre><code>public class Personne
+{
+    // Convention de nommage, les noms commencent par une minuscule
+    private String prenom;
+    private String nom;
+    private int age;
+
+    // convention de nommage, get + le nom de l&#39;attribut avec une majuscule au début
+    public String getNom()
+    {
+        return nom;
+    }
+
+    // même chose, set + le nom de l&#39;attribut avec une majuscule au début 
+    public void setNom(String nom)
+    {
+        this.nom = nom;
+    }
+}</code></pre>
+</div>
+<div id="définition-dune-classe---les-constructeurs" class="slide section level1">
+<h1>Définition d'une classe - les constructeurs</h1>
+<p>Le constructeur est, comme son nom l'indique, la méthode qui est appelée pour construire la classe, pour l'initialiser.<br />
+Il se déclare comme une fonction avec le même nom que la classe, et en omettant le type de retour :</p>
+<pre><code>public class Personne
+{
+    private String prenom;
+    private String nom;
+    private int age;
+
+    public Personne()
+    {
+    }
+
+    // même chose, set + le nom de l&#39;attribut avec une majuscule au début 
+    public Personne(String prenom, String nom, int age)
+    {
+        // Ici le this sert à distinguer le paramêtre
+        // prénom de l&#39;attribut prénom
+        this.prenom = prenom;
+        this.nom = nom;
+        this.age = age;
+    }
+}</code></pre>
+<p>Comme toute méthode, un constructeur peut être surchargé : il peut y avoir plusieurs constructeurs, forcément de même nom, pourvu que les attributs soient différents. Le compilateur choisira le bon.</p>
+<p>On appelle le constructeur avec l'opérateur <strong>new</strong> :</p>
+<pre><code>// Appel du constructeur à 3 arguments
+Personne personne = new Personne( &quot;Jean&quot;, &quot;Dupont&quot;, 18 );
+// Appel du constructeur par défaut
+Personne johnDoe = new Personne();</code></pre>
+<p>Note : Si il n'y a aucun constructeur, Java en créé un par défaut qui ne fait rien (tous les variables sont initialisées à leurs valeurs par défaut).<br />
+Dès lors qu'aun moins un constructeur est créé, il n'y a plus de constructeur créé, il faut le faire soi-même.</p>
+</div>
+<div id="mot-clé-this" class="slide section level1">
+<h1>Mot clé this</h1>
+<p>Lorsque l'on est à l'intérieur d'une méthode non static (constructeur compris) on se réfère nécessairement à une instance de la classe.<br />
+Le mot clé <strong>this</strong> permet de désigner l'instance en cours de traitement.</p>
+<p>Il est la plupart du temps implicite; lorsque l'on utilise le nom d'un attribut, le compilateur sait par défaut qu'il s'agit du nom de l'attribut en cours.<br />
+Il est donc optionnel la plupart du temps. Quelques cas où il ne l'est pas :</p>
+<h2 id="désambiguation">Désambiguation</h2>
+<p>Lorsque l'on a définit un paramètre de la fonction qui a le même nom qu'un attribut (ce qui est possible), le compilateur choisira la valeur la plus spécifique, ie l'argument. Il faut donc utiliser this pour dire que l'on désigne l'attribut, comme dans le constructeur ci-dessus :</p>
+<pre><code>public Personne(String prenom, String nom, int age)
+{
+    // Ici le this sert à distinguer le paramêtre
+    // prénom de l&#39;attribut prénom
+    this.prenom = prenom;
+    this.nom = nom;
+    this.age = age;
+}</code></pre>
+<h2 id="appel-dun-constructeur-au-sein-dun-autre">Appel d'un constructeur au sein d'un autre</h2>
+<p>On peut, dans le code d'un constructeur appeler un autre constructeur de la même classe, avec le mot clé <strong>this</strong>.<br />
+Par exemple :</p>
+<pre><code>// On appelle l&#39;autre coonstructeur en lui passant les
+// valeurs par défaut définies ci-après
+public Personne()
+{
+    this(&quot;John&quot;, &quot;Doe&quot;, -1);
+}
+
+public Personne(String prenom, String nom, int age)
+{
+    // Ici le this sert à distinguer le paramêtre
+    // prénom de l&#39;attribut prénom
+    this.prenom = prenom;
+    this.nom = nom;
+    this.age = age;
+}</code></pre>
+<p>Attention ! Ne pas confondre avec le mot clé <strong>super</strong> qui sert lui à appeler le constructeur de la classe mère.</p>
+<h2 id="passer-lobjet-courant-en-argument">Passer l'objet courant en argument</h2>
+<p>On utilisera this lorsque l'on veut passer l'objet courant en tant qu'argument.<br />
+Par exemple, si l'on souhaite maintenir une liste de tous les instances de la classe :</p>
+<pre><code>private static List&lt;Personne&gt; listePersonnes = new ArrayList&lt;Personne&gt;();
+
+public Personne()
+{
+    listePersonnes.add(this);
+}</code></pre>
+<p><strong>this</strong> désigne ici l'objet en cours de construction.</p>
+</div>
+<div id="héritage-de-classe" class="slide section level1">
+<h1>Héritage de classe</h1>
+<p>Une des propriétés les plus importantes des classes en Java et en programmation est la possibilité d'<strong>héritage</strong>.<br />
+On peut définir des classes qui hérite d'une autre.</p>
+<p>Que cela signifie-t-il ?</p>
+<p>Qu'on définit une nouvelle classe qui possède tous les attributs de l'ancienne, mais à laquelle on peut rajouter ou redéfinir des propriétés.</p>
+<pre><code>public class Chien
+{
+    private nbPattes = 4;
+    private String nom;
+
+    public Chien(String nom)
+    {
+        this.nom = nom;
+    }
+
+    public void aboyer()
+    {
+        System.out.println(&quot;Wouaf wouaf&quot;);
+    }
+
+    public abstract void afficherTaille();
+}
+
+public class Chihuahua extends Chien
+{
+    public Chihuahua(String nom)
+    {
+        super(nom);
+    }
+
+    public void afficherTaille()
+    {
+        System.out.println(&quot;Je suis petit&quot;);
+    }
+}
+
+public class TerreNeuve extends Chien
+{
+    private int nbDePersonnesSauvees;
+
+    public TerreNeuve(String nom)
+    {
+        super(nom);
+    }
+
+    public void afficherTaille()
+    {
+        System.out.println(&quot;Je suis très grand&quot;);
+    }
+
+    public void sauverDeLaNoyade()
+    {
+        nbDePersonnesSauvees++;
+    }
+}
+
+public class Rottweiller extends Chien
+{
+    public Rottweiller(String nom)
+    {
+        super(nom);
+    }
+
+    public void afficherTaille()
+    {
+        System.out.println(&quot;Je suis grand&quot;);
+    }
+
+    public void aboyer()
+    {
+        System.out.println(&quot;WOUAF GRR WOUAFF GRR WOUAFF&quot;);
+    }
+}</code></pre>
+</div>
+<div id="héritage-de-classe-1" class="slide section level1">
+<h1>Héritage de classe</h1>
+<p>Dans l'exemple précédent on a définit un concept général de Chien, et ensuite trois types de Chien particulier.<br />
+Tous les Chien possèdent les actions de base <strong>afficherTaille()</strong> et <strong>aboyer()</strong>.</p>
+<p>Pour l'action <strong>afficherTaille()</strong> elle doit nécessairement être redéfinie dans une classe héritée.</p>
+<p>Dans le cas du TerreNeuve on a défini un attribut et une méthode qui n'existe que pour lui.</p>
+<pre><code>private int nbDePersonnesSauvees;
+
+public void sauverDeLaNoyade()
+{
+    nbDePersonnesSauvees++;
+}</code></pre>
+<p>Cette action n'existe que pour le TerreNeuve, mais il possède également l'action Aboyer.</p>
+<p>Pour le Rottweiller, on a redéfinit l'action de base aboyer.</p>
+<p>Maintenant, le fait que ces 3 classes sont de type Chien, permet de leur appliquer des traitements communs :</p>
+<pre><code>List&lt;Chien&gt; chenil = new ArrayList();
+
+chenil.add( new Chihuahua(&quot;Tobi&quot;) );
+chenil.add( new TerreNeuve(&quot;Brontosaure&quot;) );
+chenil.add( new Rottweiller(&quot;Bichon&quot;) );
+
+for( Chien monChienQuiVaAboyer : chenil )
+{
+   monChienQuiVaAboyer.aboyer(); 
+}</code></pre>
+</div>
+</body>
+</html>
