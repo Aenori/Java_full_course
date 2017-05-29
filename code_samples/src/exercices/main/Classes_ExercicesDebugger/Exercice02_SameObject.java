@@ -42,6 +42,20 @@ public class Exercice02_SameObject {
 			int pos = order.get(i);
 			inverserTableau( liste_origine.get(i), liste_destination.get(i) );
 		}
+		
+		for(int[] tab : liste_origine)
+		{
+			System.out.println(tabToString(tab));
+		}
+	}
+
+	private static String tabToString(int[] tab) {
+		String res = "[";
+		for(int i = 0;i < tab.length; ++i)
+		{
+			res += " " + tab[i];
+		}
+		return res + " ]";
 	}
 
 	private static void inverserTableau(int[] src, int[] dest) {

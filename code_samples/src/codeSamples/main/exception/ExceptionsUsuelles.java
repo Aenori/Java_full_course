@@ -10,9 +10,17 @@ import java.util.*;
 import java.util.function.Consumer;
 
 public class ExceptionsUsuelles {
-	public static void main(String[] args)
-	{
-		callCallNullPointerException();
+	public static void main(String[] args) throws IOException
+	{	
+		//divideByZero();
+		//indexOutOfBondExceptionWithList(); 
+		fileThatDoesntExist();
+		badConversion();
+		wrongParseInteger();
+		indexOutOfBondExceptionWithArray();
+		System.out.println("Je ne serai pas exécuté");
+		Integer a = null;
+		nullPointerException();
 	}
 	
 	private static void callCallNullPointerException() {
@@ -44,6 +52,7 @@ public class ExceptionsUsuelles {
 	{
 		Integer a = null;
 		++a;
+		
 	}
 
 	/*
@@ -57,6 +66,10 @@ public class ExceptionsUsuelles {
 		List<Integer> listeDEntier = new ArrayList<Integer>();
 		for(int i = 0; i < 100 ; ++i)
 		{
+			if(i == 15 )
+			{
+				System.out.println("Coucou");
+			}
 			listeDEntier.add(i);
 		}
 		listeDEntier.get(listeDEntier.size());
@@ -81,8 +94,9 @@ public class ExceptionsUsuelles {
 	 * sur une valeur "null" autre que vérifier si
 	 * elle est null.
 	 */
+	private static String s = "aa";
 	public static void wrongParseInteger() {
-		int a = Integer.parseInt("aa");
+		int a = Integer.parseInt(s);
 	}
 
 	/*
@@ -108,10 +122,10 @@ public class ExceptionsUsuelles {
 	 * Cela permet de garantir qu'elles sont prises en compte par
 	 * le développeur.
 	 */
-	public static void fileThatDoesntExist() throws IOException
+	public static void fileThatDoesntExist() 
 	{
 		Path path = FileSystems.getDefault().getPath("normalement il y a peu de chance que ce fichier existe");
-		
+		//path.
 		/*
 		 * Note : cette syntaxe un peu spécifique est ce que l'on 
 		 * appelle une classe anonyme. En gros on déclare la classe 
@@ -119,10 +133,20 @@ public class ExceptionsUsuelles {
 		 * méthodes manquantes de l'interface Consumer
 		 */
 		
-		Files.lines(path).forEach(new Consumer<String>(){
-			@Override
-			public void accept(String arg0) {
-				System.out.println(arg0);
-			}});
+		try {
+			Files.lines(path).forEach(new Consumer<String>(){
+				@Override
+				public void accept(String arg0) {
+					System.out.println(arg0);
+				}});
+		} catch(Exception ex)
+		{
+			
+		}
+		
 	}
 }
+
+
+
+

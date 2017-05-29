@@ -98,7 +98,7 @@ public class Exercice04_matrice {
 		{
 			if(matrice[i].length != matrice.length)
 			{
-				throw new Exception(String.format(
+				throw new MatriceException(String.format(
 						"La matrice n'est pas carré : nombre de ligne %s, nombre de colonnes " +
 								" de la ligne %s  : %s", 
 								matrice.length, i, matrice[i].length ));

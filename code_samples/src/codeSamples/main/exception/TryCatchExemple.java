@@ -8,7 +8,7 @@ public class TryCatchExemple {
 		/*
 		 * Décommentez l'une des lignes suivantes pour voir l'effet
 		 */
-		// exceptionCatchee();
+		exceptionCatchee();
 		// exceptionNonCatchee();
 		// exceptionNonCatcheeWithFinally();
 	}
