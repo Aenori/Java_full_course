@@ -9,11 +9,12 @@ public class Exercice02_SameObject {
 	 * dans le deuxième tableau les éléments du premier tableau en ordre
 	 * inversé.
 	 * 
-	 * Problème, l'un des tableaux d'origine s'est glissé dans la liste
-	 * des tableaux de destinations.
+	 * Problème, l'on devrait obtenir 4 tableaux 5,4,3,2,1, et ce n'est pas
+	 * le cas.
 	 * 
-	 * Saurez-vous le détecter, en utilisant le debugger, par deux méthodes
-	 * différentes ?
+	 * Saurez-vous le détecter l'itération sur laquelle il y a un problème 
+	 * en utilisant le debugger (ce ne sera pas la même à chaque fois)
+	 * par deux méthodes différentes ?
 	 */
 	public static void main(String[] args)
 	{
