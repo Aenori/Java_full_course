@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions.correction;
 
 import static org.junit.Assert.*;
 
@@ -13,7 +13,34 @@ public class Exercice1_tryParse {
 	 */
 	public Integer tryParseInteger(String s)
 	{
-		return null;
+		try
+		{
+			return Integer.parseInt(s);
+		}
+		/* Important ! Soyez sélectif dans vos exceptions, vous
+		 * ne voulez pas qu'une autre exception soit catchée.
+		 */
+		catch(NumberFormatException ex )
+		{
+			return null;
+		}
+	}
+	
+	public Integer tryParseInteger2(String s)
+	{
+		Integer i = null;
+		try
+		{
+			i = Integer.parseInt(s);
+		}
+		/* Important ! Soyez sélectif dans vos exceptions, vous
+		 * ne voulez pas qu'une autre exception soit catchée.
+		 */
+		catch(NumberFormatException ex )
+		{
+			
+		}
+		return i;
 	}
 	
 	@Test

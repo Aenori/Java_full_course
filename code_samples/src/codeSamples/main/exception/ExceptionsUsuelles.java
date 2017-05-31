@@ -12,17 +12,18 @@ import java.util.function.Consumer;
 public class ExceptionsUsuelles {
 	public static void main(String[] args) throws IOException
 	{	
+		/*
+		 * Décommentez l'une des lignes pour voir l'exception levée
+		 */
 		//divideByZero();
 		//indexOutOfBondExceptionWithList(); 
-		fileThatDoesntExist();
-		badConversion();
-		wrongParseInteger();
-		indexOutOfBondExceptionWithArray();
-		System.out.println("Je ne serai pas exécuté");
-		Integer a = null;
-		nullPointerException();
+		//fileThatDoesntExist();
+		//badConversion();
+		//wrongParseInteger();
+		//indexOutOfBondExceptionWithArray();
+		//nullPointerException();
 	}
-	
+
 	private static void callCallNullPointerException() {
 		callNullPointerException();
 	}
@@ -52,7 +53,7 @@ public class ExceptionsUsuelles {
 	{
 		Integer a = null;
 		++a;
-		
+
 	}
 
 	/*
@@ -66,10 +67,6 @@ public class ExceptionsUsuelles {
 		List<Integer> listeDEntier = new ArrayList<Integer>();
 		for(int i = 0; i < 100 ; ++i)
 		{
-			if(i == 15 )
-			{
-				System.out.println("Coucou");
-			}
 			listeDEntier.add(i);
 		}
 		listeDEntier.get(listeDEntier.size());
@@ -122,7 +119,7 @@ public class ExceptionsUsuelles {
 	 * Cela permet de garantir qu'elles sont prises en compte par
 	 * le développeur.
 	 */
-	public static void fileThatDoesntExist() 
+	public static void fileThatDoesntExist() throws IOException 
 	{
 		Path path = FileSystems.getDefault().getPath("normalement il y a peu de chance que ce fichier existe");
 		//path.
@@ -132,18 +129,11 @@ public class ExceptionsUsuelles {
 		 * en même temps que l'on fait le new, en définissant les
 		 * méthodes manquantes de l'interface Consumer
 		 */
-		
-		try {
-			Files.lines(path).forEach(new Consumer<String>(){
-				@Override
-				public void accept(String arg0) {
-					System.out.println(arg0);
-				}});
-		} catch(Exception ex)
-		{
-			
-		}
-		
+		Files.lines(path).forEach(new Consumer<String>(){
+			@Override
+			public void accept(String arg0) {
+				System.out.println(arg0);
+			}});
 	}
 }
 

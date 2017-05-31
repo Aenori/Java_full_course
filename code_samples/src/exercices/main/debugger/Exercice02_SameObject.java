@@ -1,4 +1,4 @@
-package Classes_ExercicesDebugger;
+package debugger;
 
 import java.util.*;
 
@@ -40,7 +40,7 @@ public class Exercice02_SameObject {
 		for(int i = 0; i < 5; ++i)
 		{
 			int pos = order.get(i);
-			inverserTableau( liste_origine.get(i), liste_destination.get(i) );
+			inverserTableau( liste_origine.get(pos), liste_destination.get(pos) );
 		}
 		
 		for(int[] tab : liste_origine)
@@ -59,9 +59,10 @@ public class Exercice02_SameObject {
 	}
 
 	private static void inverserTableau(int[] src, int[] dest) {
+		
 		for(int i = 0; i < src.length; ++i)
 		{
-			src[i] = dest[src.length - i - 1];
+			dest[i] = src[src.length - i - 1];
 		}
 		
 	}

@@ -1,4 +1,4 @@
-package Classes_ExercicesDebugger;
+package debugger;
 
 import java.util.*;
 
@@ -18,7 +18,6 @@ public class Exercice01_valeursIntermediaires {
 		fonction2();
 		fonction3();
 		fonction4();
-		fonction5();
 	}
 
 	private static void fonction1() {
@@ -55,11 +54,6 @@ public class Exercice01_valeursIntermediaires {
 	}
 	
 	private static void fonction4() {
-		
-		
-	}
-	
-	private static void fonction5() {
 		int n = 30;
 		Set<Integer> valeur_intermediaire = new TreeSet<Integer>();
 		for(int i = 2; i < n; ++i)

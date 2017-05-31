@@ -64,7 +64,6 @@ public class ExceptionsUsuellesTest {
 	/* C'est un peu idiot puisqu'il s'agit d'une fonction de test, mais
 	 * on doit déclarer l'exception car elle n'appartient au package java.lang.
 	 */
-	 
 	public void testFileThatDoesntExist() throws IOException {
 		exception.expect(java.nio.file.NoSuchFileException.class);
 		// Ce message apparaît parce que c'est le nom du fichier

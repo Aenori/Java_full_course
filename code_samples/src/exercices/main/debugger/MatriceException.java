@@ -1,4 +1,4 @@
-package Classes_ExercicesDebugger;
+package debugger;
 
 public class MatriceException extends Exception {
 
